@@ -9,7 +9,6 @@ import com.mxartesano.develop.java8a.eventos.persistence.Conexion;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
