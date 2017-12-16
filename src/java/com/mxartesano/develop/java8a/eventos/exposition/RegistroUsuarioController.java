@@ -88,6 +88,7 @@ public class RegistroUsuarioController extends HttpServlet {
             
             service.registrarUsuario(u);          
             
+             request.getSession().setAttribute("message","Registrado");
             response.sendRedirect("registroUsuario.jsp");
         } catch (Exception e) {
             request.getSession().setAttribute("message", e.getMessage());
