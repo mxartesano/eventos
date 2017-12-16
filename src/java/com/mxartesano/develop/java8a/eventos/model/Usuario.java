@@ -14,7 +14,7 @@ public class Usuario {
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
-    private String correoelectronico;
+    private String correoElectronico;
     private String password;
     
     public int getId() {
@@ -50,11 +50,11 @@ public class Usuario {
     }
 
     public String getCorreoelectronico() {
-        return correoelectronico;
+        return correoElectronico;
     }
 
-    public void setCorreoelectronico(String correoelectronico) {
-        this.correoelectronico = correoelectronico;
+    public void setCorreoelectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
     }
 
     public String getPassword() {

@@ -15,4 +15,5 @@ import java.util.List;
 public interface UsuarioPersitence {
     List<Usuario> obtenerUsuarios() throws Exception;
     void registrarUsuario(Usuario usuario) throws Exception;
+
 }
