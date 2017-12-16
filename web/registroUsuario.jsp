@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Log in with your account</title>
+    <title>Registro Usuario</title>
 
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="resources/css/common.css" rel="stylesheet">

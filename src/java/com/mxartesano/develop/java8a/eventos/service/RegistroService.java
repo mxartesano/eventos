@@ -12,7 +12,7 @@ import com.mxartesano.develop.java8a.eventos.model.Registro;
  * @author mxartesano
  */
 public class RegistroService {
-    public void validarSesion(Registro registro){
+    public void validarSesion(Registro registro) throws Exception{
         
     }
     
