@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class UsuarioServiceImpl implements UsuarioService{
     
-    private UsuarioPersitence usuarioPersitence;
+    private final UsuarioPersitence usuarioPersitence;
     
     public UsuarioServiceImpl() {
         usuarioPersitence = new UsuarioPersitenceImpl();
@@ -37,9 +37,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Override
     public void registrarUsuario(Usuario usuario) throws Exception {
-       if(usuario != null || usuario.getNombre() != null || !usuario.getNombre().isEmpty() && usuario.getApellidoPaterno() != null || !usuario.getApellidoPaterno().isEmpty() &&
-             usuario.getApellidoMaterno() != null || !usuario.getApellidoMaterno().isEmpty() && usuario.getCorreoelectronico() != null || !usuario.getCorreoelectronico().isEmpty() &&
-             usuario.getPassword() != null || !usuario.getPassword().isEmpty())
+       if(usuario != null && usuario.getNombre() != null && !usuario.getNombre().isEmpty() && usuario.getApellidoPaterno() != null && !usuario.getApellidoPaterno().isEmpty() &&
+             usuario.getApellidoMaterno() != null && !usuario.getApellidoMaterno().isEmpty() && usuario.getCorreoelectronico() != null && !usuario.getCorreoelectronico().isEmpty() &&
+             usuario.getPassword() != null && !usuario.getPassword().isEmpty())
         {
         usuarioPersitence.registrarUsuario(usuario);
         
