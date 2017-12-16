@@ -58,7 +58,7 @@ public class RegistroController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+     //   processRequest(request, response);
     }
 
     /**
@@ -72,7 +72,16 @@ public class RegistroController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        try {
+            request.getSession().removeAttribute("message");
+            
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.getSession().setAttribute("message", e.getMessage());
+        }
     }
 
     /**

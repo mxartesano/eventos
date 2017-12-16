@@ -5,8 +5,15 @@
  */
 package com.mxartesano.develop.java8a.eventos.exposition;
 
+import com.mxartesano.develop.java8a.eventos.model.Evento;
+import com.mxartesano.develop.java8a.eventos.model.Login;
+import com.mxartesano.develop.java8a.eventos.service.EventoService;
+import com.mxartesano.develop.java8a.eventos.service.LoginService;
+import com.mxartesano.develop.java8a.eventos.service.LoginServiceImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -62,7 +69,40 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        try {
+            String correoElectronico = request.getParameter("email");
+            String password = request.getParameter("password");
+            
+            Login login = new Login();
+            login.setCorreoElectronico(correoElectronico);
+            login.setPassword(password);
+            
+            LoginService loginService = new LoginServiceImpl();
+            loginService.existeLogin(login);
+            
+            System.out.println("Login OK");
+            
+            /**
+            EventoService eventoService = null;
+            List<Evento> eventos = eventoService.obtenerEventos();
+            **/
+            
+            List<Evento> eventos = new ArrayList<Evento>();
+            eventos.add(new Evento());
+            eventos.add(new Evento());
+            
+            request.getSession().setAttribute("eventos", eventos);
+            response.sendRedirect("eventos.jsp");
+            
+            
+        } catch (Exception e) {
+            request.setAttribute("loginError", e.getMessage());
+            response.sendRedirect("index.jsp");
+            e.printStackTrace();
+        }
+        
+        
     }
 
     /**

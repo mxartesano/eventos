@@ -14,13 +14,11 @@ import com.mxartesano.develop.java8a.eventos.persistence.LoginPersistenceImpl;
  * @author igarcia
  */
 public class LoginServiceImpl implements LoginService{
-    private LoginPersistence loginPersistence;
+    private final LoginPersistence loginPersistence;
 
     public LoginServiceImpl() {
         loginPersistence = new LoginPersistenceImpl();
     }
-    
-    
 
     /**
      * Si existe no pasa nada

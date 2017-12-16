@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Registro Usuario</title>
+    <title>Registro Eventos</title>
 
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="resources/css/common.css" rel="stylesheet">
@@ -26,20 +26,16 @@
 
 <div class="container">
 
-    <form method="POST" action="${contextPath}/registroUsuario" class="form-signin">
-        <h2 class="form-heading">Registro de usuarios</h2>
+    <form method="POST" action="${contextPath}/registroEvento" class="form-signin">
+        <h2 class="form-heading">Registro de eventos</h2>
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
             <span>${message}</span>
             <input name="nombre" type="text" class="form-control" placeholder="Nombre"
                    autofocus="true"/>
-            <input name="apellidoPaterno" type="text" class="form-control" placeholder="Apellido Paterno"
+            <input name="ubicacion" type="text" class="form-control" placeholder="Ubicacion"
                    autofocus="true"/>
-            <input name="apellidoMaterno" type="text" class="form-control" placeholder="Apellido Materno"
-                   autofocus="true"/>
-            <input name="correoElectronico" type="text" class="form-control" placeholder="Correo electronico"
-                   autofocus="true"/>
-            <input name="password" type="text" class="form-control" placeholder="Password"
+            <input name="fecha" type="date" class="form-control" placeholder="Fecha"
                    autofocus="true"/>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Guardar</button>
 
