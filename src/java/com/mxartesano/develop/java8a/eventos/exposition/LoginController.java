@@ -8,6 +8,7 @@ package com.mxartesano.develop.java8a.eventos.exposition;
 import com.mxartesano.develop.java8a.eventos.model.Evento;
 import com.mxartesano.develop.java8a.eventos.model.Login;
 import com.mxartesano.develop.java8a.eventos.service.EventoService;
+import com.mxartesano.develop.java8a.eventos.service.EventosServiceImpl;
 import com.mxartesano.develop.java8a.eventos.service.LoginService;
 import com.mxartesano.develop.java8a.eventos.service.LoginServiceImpl;
 import java.io.IOException;
@@ -83,14 +84,9 @@ public class LoginController extends HttpServlet {
             
             System.out.println("Login OK");
             
-            /**
-            EventoService eventoService = null;
+           
+            EventoService eventoService = new EventosServiceImpl();
             List<Evento> eventos = eventoService.obtenerEventos();
-            **/
-            
-            List<Evento> eventos = new ArrayList<Evento>();
-            eventos.add(new Evento());
-            eventos.add(new Evento());
             
             request.getSession().setAttribute("eventos", eventos);
             response.sendRedirect("eventos.jsp");

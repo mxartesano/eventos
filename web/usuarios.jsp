@@ -31,6 +31,12 @@
 <body>
         <div class="container">
 
+             <a href="eventos"> Eventos </a>
+    <a href="registroEvento.jsp"> Registrar Eventos </a>
+    <a href="usuarios"> Usuarios</a>
+    <a href="registroUsuario.jsp"> Registro Usuarios </a>
+    
+    
            <table class="table">
         <thead>
           <tr>

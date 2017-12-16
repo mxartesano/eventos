@@ -25,8 +25,13 @@
 <body>
 
 <div class="container">
-
-    <form method="POST" action="${contextPath}/registroEvento" class="form-signin">
+ <a href="eventos"> Eventos </a>
+    <a href="registroEvento.jsp"> Registrar Eventos </a>
+    <a href="usuarios"> Usuarios</a>
+    <a href="registroUsuario.jsp"> Registro Usuarios </a>
+    
+    
+    <form method="POST" action="registroEvento" class="form-signin">
         <h2 class="form-heading">Registro de eventos</h2>
 
         <div class="form-group ${error != null ? 'has-error' : ''}">

@@ -5,8 +5,13 @@
  */
 package com.mxartesano.develop.java8a.eventos.exposition;
 
+import com.mxartesano.develop.java8a.eventos.model.Evento;
+import com.mxartesano.develop.java8a.eventos.persistence.EventoPersistence;
+import com.mxartesano.develop.java8a.eventos.service.EventoService;
+import com.mxartesano.develop.java8a.eventos.service.EventosServiceImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mxartesano
  */
-@WebServlet(name = "Registro", urlPatterns = {"/registro"})
+@WebServlet(name = "Registro", urlPatterns = {"/registroEvento"})
 public class RegistroController extends HttpServlet {
 
     /**
@@ -75,8 +80,17 @@ public class RegistroController extends HttpServlet {
         
         try {
             request.getSession().removeAttribute("message");
+            request.getParameter("");
             
+            EventoService eventoService = new EventosServiceImpl();
+            Evento evento = new Evento();
+            evento.setNombre(request.getParameter("nombre"));
+            evento.setUbicacion(request.getParameter("ubicacion"));
             
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            evento.setFecha(sdf.parse(request.getParameter("fecha")));
+            
+            eventoService.registrarEvento(evento);
             
         } catch (Exception e) {
             e.printStackTrace();

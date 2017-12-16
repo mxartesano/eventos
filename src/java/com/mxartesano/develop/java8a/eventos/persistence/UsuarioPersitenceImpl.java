@@ -51,7 +51,7 @@ public class UsuarioPersitenceImpl implements UsuarioPersitence{
     public void registrarUsuario(Usuario usuario) throws Exception {
         Connection connection = Conexion.getConexionBD().getConnection();
         PreparedStatement pst = connection.prepareStatement("INSERT INTO usuario(ap_paterno, ap_materno, correo, nombre, password ) "
-                + "VALUES (?,?,NOW())");
+                + "VALUES (?,?,?,?,?)");
         
         pst.setString(1, usuario.getApellidoPaterno());
         pst.setString(2, usuario.getApellidoMaterno());

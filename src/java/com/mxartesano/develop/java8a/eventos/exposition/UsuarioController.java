@@ -5,8 +5,15 @@
  */
 package com.mxartesano.develop.java8a.eventos.exposition;
 
+import com.mxartesano.develop.java8a.eventos.model.Evento;
+import com.mxartesano.develop.java8a.eventos.model.Usuario;
+import com.mxartesano.develop.java8a.eventos.service.EventoService;
+import com.mxartesano.develop.java8a.eventos.service.EventosServiceImpl;
+import com.mxartesano.develop.java8a.eventos.service.UsuarioService;
+import com.mxartesano.develop.java8a.eventos.service.UsuarioServiceImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -58,7 +65,15 @@ public class UsuarioController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            UsuarioService service = new UsuarioServiceImpl();
+            List<Usuario> usuarios = service.obtenerUsuarios();
+            
+            request.getSession().setAttribute("usuarios", usuarios);
+            response.sendRedirect("usuarios.jsp");
+        } catch (Exception e) {
+            e.printStackTrace();;
+        }
     }
 
     /**

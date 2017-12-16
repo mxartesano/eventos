@@ -5,11 +5,12 @@
  */
 package com.mxartesano.develop.java8a.eventos.exposition;
 
-import com.mxartesano.develop.java8a.eventos.model.Usuario;
-import com.mxartesano.develop.java8a.eventos.service.UsuarioService;
-import com.mxartesano.develop.java8a.eventos.service.UsuarioServiceImpl;
+import com.mxartesano.develop.java8a.eventos.model.Evento;
+import com.mxartesano.develop.java8a.eventos.service.EventoService;
+import com.mxartesano.develop.java8a.eventos.service.EventosServiceImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author igarcia
  */
-@WebServlet(name = "RegistroUsuarioController", urlPatterns = {"/registroUsuario"})
-public class RegistroUsuarioController extends HttpServlet {
+@WebServlet(name = "ListaEventoControlller", urlPatterns = {"/eventos"})
+public class ListaEventoControlller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +41,10 @@ public class RegistroUsuarioController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegistroUsuarioController</title>");            
+            out.println("<title>Servlet ListaEventoControlller</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegistroUsuarioController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ListaEventoControlller at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,7 +62,18 @@ public class RegistroUsuarioController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       
+        try {
+            EventoService eventoService = new EventosServiceImpl();
+          List<Evento> eventos = eventoService.obtenerEventos();
+            
+            request.getSession().setAttribute("eventos", eventos);
+            response.sendRedirect("eventos.jsp");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+          
+            
     }
 
     /**
@@ -75,24 +87,7 @@ public class RegistroUsuarioController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            
-            UsuarioService service = new UsuarioServiceImpl();
-            Usuario u = new Usuario();
-            
-            u.setNombre(request.getParameter("nombre"));
-            u.setApellidoMaterno(request.getParameter("apellidoMaterno"));
-            u.setApellidoPaterno(request.getParameter("apellidoPaterno"));
-            u.setCorreoelectronico(request.getParameter("correoElectronico"));
-            u.setPassword(request.getParameter("password"));
-            
-            service.registrarUsuario(u);          
-            
-            response.sendRedirect("registroUsuario.jsp");
-        } catch (Exception e) {
-            request.getSession().setAttribute("message", e.getMessage());
-            response.sendRedirect("registroUsuario.jsp");
-        }
+        processRequest(request, response);
     }
 
     /**
