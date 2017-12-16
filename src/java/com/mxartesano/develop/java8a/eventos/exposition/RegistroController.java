@@ -91,6 +91,11 @@ public class RegistroController extends HttpServlet {
             evento.setFecha(sdf.parse(request.getParameter("fecha")));
             
             eventoService.registrarEvento(evento);
+             request.getSession().setAttribute("message", "Registrado");
+             
+            response.sendRedirect("registroEvento");
+            
+            
             
         } catch (Exception e) {
             e.printStackTrace();

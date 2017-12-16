@@ -49,7 +49,7 @@ public class EventoPersistenceImpl implements EventoPersistence{
     public void registrarEvento(Evento e) throws Exception {
         
         Connection connection = Conexion.getConexionBD().getConnection();
-        PreparedStatement pst = connection.prepareStatement("insert into eventos(nombre, fecha, ubicacion) values (?,?,NOW())");
+        PreparedStatement pst = connection.prepareStatement("insert into eventos(nombre, fecha, ubicacion) values (?,?,?)");
         pst.setString(1, e.getNombre());
         pst.setDate(2, new java.sql.Date(e.getFecha().getTime()));
         pst.setString(3, e.getUbicacion());
